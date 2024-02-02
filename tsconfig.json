@@ -1,5 +1,8 @@
 {
   "compilerOptions": {
+    "typeRoots": [
+      "src/custom.d.ts"
+    ],
     "target": "es5",
     "lib": [
       "dom",
@@ -23,6 +26,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*",
+    "src/custom.d.ts"
   ]
 }
