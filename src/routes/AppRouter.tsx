@@ -1,21 +1,8 @@
 import React from "react";
-import {
-  createBrowserRouter,
-  RouteObject,
-  RouterProvider,
-} from "react-router-dom";
-import { ErrorPage, InvoicePage } from "../pages";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ErrorPage } from "../pages";
+import Contact from "./Contact";
 import { Layout } from "../layout";
-import { PATHS } from "./Paths";
-
-type Route = RouteObject & { title: string };
-export const routes: Route[] = [
-  {
-    path: PATHS.INVOICE,
-    title: "فاکتور",
-    element: <InvoicePage />,
-  },
-];
 
 function AppRouter() {
   const router = createBrowserRouter([
@@ -23,7 +10,12 @@ function AppRouter() {
       path: "/",
       element: <Layout />,
       errorElement: <ErrorPage />,
-      children: routes,
+      children: [
+        {
+          path: "contacts/:contactId",
+          element: <Contact />,
+        },
+      ],
     },
   ]);
   return <RouterProvider router={router} />;

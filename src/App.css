@@ -2,3 +2,17 @@ html, body, #root {
     height: 100%;
     margin: 0 !important;
 }
+
+@font-face {
+    font-family: IRANsans;
+    font-style: normal;
+    font-weight: 400;
+    src: url(assets/fonts/IRANSansXFaNum-Regular.woff2) format("woff2");
+}
+
+@font-face {
+    font-family: IRANsans;
+    font-style: normal;
+    font-weight: 500;
+    src: url(assets/fonts/IRANSansXFaNum-Bold.woff2) format("woff2");
+}

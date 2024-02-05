@@ -1,64 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  Box,
+  Collapse,
   List,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  useTheme,
 } from "@mui/material";
-import { InvertColorsOffRounded } from "@mui/icons-material";
+import { AiFillCustomerService } from "react-icons/ai";
+import { MdExpandLess, MdExpandMore } from "react-icons/md";
 
 function MenuLayout() {
+  const theme = useTheme();
   return (
-    <List sx={{ height: "100%" }}>
-      <ListItemButton>
+    <Box
+      border={"black"}
+      sx={{
+        backgroundColor: "primary.main",
+        color: theme.palette.text.secondary,
+      }}
+    >
+      <List>
+        <SubMenu />
+        <SubMenu />
+      </List>
+    </Box>
+  );
+}
+
+function SubMenu() {
+  const [open, setOpen] = useState<boolean>(false);
+  const theme = useTheme();
+  return (
+    <>
+      <ListItemButton onClick={() => setOpen(!open)}>
         <ListItemIcon>
-          <InvertColorsOffRounded />
+          <AiFillCustomerService color={theme.palette.text.secondary} />
         </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
+        <ListItemText primary="مشتری" />
+        {open ? <MdExpandLess /> : <MdExpandMore />}
       </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemIcon>
-          <InvertColorsOffRounded />
-        </ListItemIcon>
-        <ListItemText primary={"فاکتور"} />
-      </ListItemButton>
-    </List>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <ListItemButton>
+          <ListItemIcon />
+          <ListItemText primary="لیست" />
+        </ListItemButton>
+      </Collapse>
+    </>
   );
 }
 
