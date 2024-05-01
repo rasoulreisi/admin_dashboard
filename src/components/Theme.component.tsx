@@ -13,7 +13,6 @@ const cacheRtl = createCache({
 });
 
 function Theme({ children }: { children: React.ReactNode }) {
-  document.dir = "rtl";
   const theme = createTheme({
     direction: "rtl",
     palette: {

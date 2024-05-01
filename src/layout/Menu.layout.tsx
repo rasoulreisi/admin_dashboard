@@ -12,16 +12,13 @@ import {AiFillCustomerService} from "react-icons/ai";
 import {MdExpandLess, MdExpandMore} from "react-icons/md";
 import {items, MenuItem} from "../utils/menuItems.util";
 import {IconContext} from "react-icons";
-import {blue, grey} from "@mui/material/colors";
+import {blue, grey, lightBlue} from "@mui/material/colors";
 
 function MenuLayout() {
     const theme = useTheme();
     return (
         <Box
             border={"black"}
-            sx={{
-                color: theme.palette.grey["800"]
-            }}
         >
             <List sx={{padding: 0}}>
                 {items.map(item => <Menu item={item}/>)}
@@ -33,15 +30,19 @@ function MenuLayout() {
 function Menu({item}: { item: MenuItem }) {
     const [open, setOpen] = useState<boolean>(false);
     const theme = useTheme();
-    const bgColors = [theme.palette.grey["500"] ,theme.palette.grey["400"], theme.palette.grey["300"]]
+    const backTheme = lightBlue;
+    const bgColors = [backTheme["500"], backTheme["300"], backTheme["100"]]
     const currentBg = bgColors[item.level - 1];
     return (
         <>
-            <ListItemButton sx={{backgroundColor: currentBg ,padding:'2px 4px', '& :hover': {color: blue.A400}}} onClick={() => setOpen(!open)}>
+            <ListItemButton sx={{backgroundColor: currentBg, borderRadius: 1, marginBottom: .5, padding: '2px 4px', '&:hover': { backgroundColor: currentBg, fontStyle: 'normal', fontWeight: 'bold'}}}
+                            onClick={() => setOpen(!open)}>
 
-                <ListItemIcon sx={{fontSize: 16, minWidth: 'initial', marginRight: '8px', '& :hover': {color: blue.A400}}} color={theme.palette.text.secondary}>
+                <ListItemIcon
+                    sx={{fontSize: 16, minWidth: 'initial', marginRight: '8px', '& :hover': {color: blue.A400}}}
+                    color={theme.palette.text.secondary}>
 
-                        {item.icon}
+                    {item.icon}
 
                 </ListItemIcon>
                 <ListItemText sx={{fontSize: 12}} disableTypography primary={item.title}/>
