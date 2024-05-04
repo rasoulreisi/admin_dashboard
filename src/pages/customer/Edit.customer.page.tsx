@@ -1,7 +1,8 @@
 import React from "react";
+import { Box } from "@mui/material";
 
 function EditCustomerPage() {
-  return <div>it is customer page</div>;
+  return <Box height={"100vh"}>it is customer page</Box>;
 }
 
 export default EditCustomerPage;

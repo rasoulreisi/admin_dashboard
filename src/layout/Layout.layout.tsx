@@ -1,24 +1,42 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Divider, Grid } from "@mui/material";
 import { MenuLayout } from "./index";
 import { blue, blueGrey, grey, lightGreen } from "@mui/material/colors";
 import { Outlet } from "react-router-dom";
 
 function LayoutLayout() {
   return (
-    <Box padding={0.75}>
-      <Grid boxShadow={1} sx={{ height: 40 }} borderRadius={1} marginBottom={1}>
+    <>
+      <Grid
+        item
+        flexGrow={1}
+        paddingTop={1}
+        position={"fixed"}
+        height={60}
+        marginLeft={"200px"}
+      >
         header
       </Grid>
-      <Grid container sx={{ height: "100%" }}>
+      <Grid container height={"100%"} alignContent={"flex-start"}>
         <Grid item sx={{ height: "100%", width: 200 }}>
           <MenuLayout />
         </Grid>
-        <Grid item flexGrow={1} sx={{ height: "100%" }}>
+        <Grid item marginLeft={1}>
+          <Divider orientation={"vertical"} variant={"fullWidth"} />
+        </Grid>
+        <Grid
+          item
+          flexGrow={1}
+          padding={1}
+          margin={2}
+          borderRadius={3}
+          sx={{ backgroundColor: grey["300"] }}
+          marginTop={"60px"}
+        >
           <Outlet />
         </Grid>
       </Grid>
-    </Box>
+    </>
   );
 }
 

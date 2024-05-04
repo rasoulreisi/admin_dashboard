@@ -16,7 +16,13 @@ import { useNavigate } from "react-router-dom";
 function MenuLayout() {
   const theme = useTheme();
   return (
-    <Box border={"black"}>
+    <Box
+      border={"black"}
+      height={"100%"}
+      position={"fixed"}
+      left={0}
+      width={200}
+    >
       <List sx={{ padding: 0 }}>
         {items.map((item) => (
           <Menu item={item} />
